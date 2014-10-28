@@ -99,6 +99,18 @@ NSString * const kYelpTokenSecret = @"mqtKIxMIR4iBtBPZCmCLEb-Dz3Y";
     return cell;
 }
 
+- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
+    _searchTerm = searchString;
+    [self fetchBusinessesWithQuery:self.searchTerm params:nil];
+    return YES;
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    self.searchTerm = searchBar.text;
+    [self fetchBusinessesWithQuery:self.searchTerm params:nil];
+    [self.resultsListView reloadData];
+    
+}
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     [self.searchBar resignFirstResponder];
