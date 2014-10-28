@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <objects>
@@ -17,7 +16,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Vdq-fT-sAH">
-                    <rect key="frame" x="0.0" y="61" width="320" height="507"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
             </subviews>
@@ -27,9 +26,9 @@
                 <constraint firstAttribute="trailing" secondItem="Vdq-fT-sAH" secondAttribute="trailing" id="2Nc-vZ-yKk"/>
                 <constraint firstAttribute="bottom" secondItem="Vdq-fT-sAH" secondAttribute="bottom" id="jOA-xe-iAf"/>
                 <constraint firstItem="Vdq-fT-sAH" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="klF-O4-bfX"/>
-                <constraint firstItem="Vdq-fT-sAH" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="61" id="se1-RZ-BXy"/>
+                <constraint firstItem="Vdq-fT-sAH" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="se1-RZ-BXy"/>
             </constraints>
-            <point key="canvasLocation" x="146" y="158"/>
+            <point key="canvasLocation" x="-30" y="-632"/>
         </view>
     </objects>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

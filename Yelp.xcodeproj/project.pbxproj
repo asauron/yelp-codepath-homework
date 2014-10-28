@@ -125,8 +125,8 @@
 				B64891D319FF4FA200573C27 /* FilterViewController.h */,
 				B64891D419FF4FA200573C27 /* FilterViewController.m */,
 				B64891D519FF4FA200573C27 /* FilterViewController.xib */,
-				B64891D819FF66A600573C27 /* SwitchCell.h */,
 				B64891D919FF66A600573C27 /* SwitchCell.m */,
+				B64891D819FF66A600573C27 /* SwitchCell.h */,
 				B64891DA19FF66A600573C27 /* SwitchCell.xib */,
 			);
 			name = "View Controllers";

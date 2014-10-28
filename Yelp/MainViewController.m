@@ -69,13 +69,17 @@ NSString * const kYelpTokenSecret = @"mqtKIxMIR4iBtBPZCmCLEb-Dz3Y";
     self.resultsListView.delegate = self;
     [self.resultsListView registerNib:[UINib nibWithNibName:@"BusinessCell" bundle:nil]
                forCellReuseIdentifier:@"BusinessCell"];
-    self.resultsListView.rowHeight = UITableViewAutomaticDimension;
+    //self.resultsListView.rowHeight = UITableViewAutomaticDimension;
     
     self.navigationItem.leftBarButtonItem = self.filterButton;
     self.navigationItem.titleView = self.searchBar;
     
     
 
+}
+
+-(void) viewDidAppear:(BOOL)animated{
+    self.resultsListView.rowHeight = UITableViewAutomaticDimension;
 }
 
 - (void)didReceiveMemoryWarning
@@ -109,10 +113,12 @@ NSString * const kYelpTokenSecret = @"mqtKIxMIR4iBtBPZCmCLEb-Dz3Y";
     [self presentViewController:nvc animated:YES completion:nil];
 }
 
-#pragma mark - Filter delegate methods
 
+
+#pragma mark - Filter delegate methods
+//(void)filterViewController:(FilterViewController *) filterViewController didChangeFilters:(NSDictionary *) filters;
 - (void)filterViewController:(FilterViewController *)filterViewController didChangeFilters:(NSDictionary *)filters {
-  ;
+    [self fetchBusinessesWithQuery:self.searchTerm params:filters];
 }
 
 - (void)fetchBusinessesWithQuery:(NSString *)query params:(NSDictionary *)params {
