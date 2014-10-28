@@ -22,6 +22,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 - (void)setOn:(BOOL)on animated:(BOOL)animated;
+@property (weak, nonatomic) id<SwitchCellDelegate> delegate;
 @property (nonatomic, assign) BOOL on;
 
 

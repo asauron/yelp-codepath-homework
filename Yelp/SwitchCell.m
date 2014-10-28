@@ -14,7 +14,7 @@
 @property (weak, nonatomic) IBOutlet UISwitch *toggleSwitch;
 
 //@property (nonatomic, assign) BOOL on;
-@property (nonatomic, weak) id<SwitchCellDelegate> delegate;
+//@property (nonatomic, weak) id<SwitchCellDelegate> delegate;
 
 @end
 
