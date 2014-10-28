@@ -18,9 +18,12 @@
 @property (strong, nonatomic) NSMutableSet *selectedCategories;
 
 @property (nonatomic, strong) NSArray *distanceOptions;
-@property (nonatomic, assign) NSInteger selectedDistanceIndex;
+
 @property (assign, nonatomic) BOOL deal;
 @property (nonatomic, strong) NSArray *sectionTitles;
+@property (nonatomic, strong) NSArray *sortByCategories;
+@property (nonatomic, assign) int distance;
+@property (nonatomic, assign) int sortBy;
 
 @end
 
@@ -32,7 +35,10 @@
         [self initCategories];
         self.selectedCategories = [NSMutableSet set];
         
-        self.sectionTitles = @[@"Category", @"Sort By", @"Distance", @"Deals"];
+        self.sectionTitles = @[@"Sort By", @"Category", @"Distance", @"Deals"];
+        self.distanceOptions = @[@"1 mile", @"5 miles",@"10 miles",@"20 miles"];
+        self.sortByCategories = @[@"Best Match", @"Distance",@"Highest Rated"];
+        self.categories = @[@"Open Now", @"Hot & New",@"Delivery"];
     }
     return self;
 }
@@ -52,7 +58,7 @@
     self.tableView.dataSource = self;
     
     [self.tableView registerNib:[UINib nibWithNibName:@"SwitchCell" bundle:nil] forCellReuseIdentifier:@"SwitchCell"];
-    [self.tableView reloadData];
+    //[self.tableView reloadData];
     
 }
 
@@ -65,19 +71,26 @@
 #pragma mark - Table Methods
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.sectionTitles.count;
+    //only one row for deals
+    if(section == 3){
+        return 1;
+    }
+    
+    return 3;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     SwitchCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SwitchCell" forIndexPath:indexPath];
-    if (indexPath.section == 0) {
-        cell.titleLabel.text = self.categories[indexPath.row][@"name"];
-        cell.on = [self.selectedCategories containsObject:self.categories[indexPath.row]];
+     //cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:identifier] autorelease];
+    
+   if (indexPath.section == 0) {
+       cell.titleLabel.text = self.sortByCategories[indexPath.row];
     } else if (indexPath.section == 1) {
+        cell.titleLabel.text = self.categories[indexPath.row];
+    } else if (indexPath.section == 2) {
+        cell.titleLabel.text = self.distanceOptions[indexPath.row];
+    } else if (indexPath.section == 3) {
         cell.titleLabel.text = @"Offering a Deal";
-        cell.on = self.deal;
-        cell.delegate = self;
-        return cell;
     }
     cell.delegate = self;
     return cell;
@@ -88,8 +101,42 @@
     return self.sectionTitles[section];
 }
 
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 30.0;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 4;
+}
+
 - (void)switchCell:(SwitchCell *)cell didUpdateValue:(BOOL)value {
-   
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    if (indexPath.section == 0) { //sort by
+       self.sortBy = (int) indexPath.row;
+    } else if (indexPath.section == 1) { //categories
+      if (value) {
+            [self.selectedCategories addObject:self.categories[indexPath.row]];
+        } else {
+            [self.selectedCategories removeObject:self.categories[indexPath.row]];
+        }
+    } else if (indexPath.section == 2 ) {
+      switch (indexPath.row) {
+            case 0:
+                self.distance = 1;
+            case 1:
+               self.distance = 5;
+            case 2:
+                self.distance = 10;
+            case 3:
+                self.distance = 20;
+      }
+        
+    } else if (indexPath.section == 3) {
+        self.deal = value;
+    }
+    [self.tableView reloadData];
 }
 
 
@@ -103,6 +150,23 @@
     [self.delegate filterViewController:self didChangeFilters:self.filters];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+- (NSDictionary *)filters {
+    NSMutableDictionary *filters = [NSMutableDictionary dictionary];
+    if (self.selectedCategories.count > 0) {
+        NSMutableArray *addedFilters = [NSMutableArray array];
+        for (NSDictionary *category in self.selectedCategories) {
+            [addedFilters addObject:category[@"code"]];
+        }
+        NSString *categoryFilter = [addedFilters componentsJoinedByString:@","];
+        [filters setObject:categoryFilter forKey:@"category_filter"];
+    }
+    [filters setObject:[NSNumber numberWithBool:self.deal] forKey:@"deals_filter"];
+    [filters setObject:[NSNumber numberWithInt:self.distance] forKey:@"radius_filter"];
+    [filters setObject:[NSNumber numberWithInt:self.sortBy] forKey:@"sort"];
+    return filters;
+}
+
 
 - (void)initCategories {
     self.categories =

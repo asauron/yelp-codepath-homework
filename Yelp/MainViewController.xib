@@ -17,25 +17,17 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Vdq-fT-sAH">
-                    <rect key="frame" x="0.0" y="36" width="320" height="532"/>
+                    <rect key="frame" x="0.0" y="61" width="320" height="507"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <gestureRecognizers/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="Vdq-fT-sAH" secondAttribute="trailing" id="1ze-T2-tFT"/>
-                <constraint firstAttribute="bottom" secondItem="Vdq-fT-sAH" secondAttribute="bottom" id="8h6-EP-Psn"/>
-                <constraint firstItem="Vdq-fT-sAH" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Am9-jI-F3N"/>
-                <constraint firstAttribute="bottom" secondItem="Vdq-fT-sAH" secondAttribute="bottom" id="PTU-Nm-dQj"/>
-                <constraint firstItem="Vdq-fT-sAH" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="36" id="RFa-OQ-g42"/>
-                <constraint firstItem="Vdq-fT-sAH" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="UMZ-Gu-KDm"/>
-                <constraint firstAttribute="trailing" secondItem="Vdq-fT-sAH" secondAttribute="trailing" id="USv-FG-F0z"/>
-                <constraint firstAttribute="trailing" secondItem="Vdq-fT-sAH" secondAttribute="trailing" id="V0T-86-8NR"/>
-                <constraint firstItem="Vdq-fT-sAH" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ofd-Sh-4v9"/>
-                <constraint firstItem="Vdq-fT-sAH" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="pbN-4a-rxr"/>
-                <constraint firstItem="Vdq-fT-sAH" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="36" id="rMR-xQ-FAA"/>
-                <constraint firstAttribute="bottom" secondItem="Vdq-fT-sAH" secondAttribute="bottom" id="sLc-D5-YZk"/>
+                <constraint firstAttribute="trailing" secondItem="Vdq-fT-sAH" secondAttribute="trailing" id="2Nc-vZ-yKk"/>
+                <constraint firstAttribute="bottom" secondItem="Vdq-fT-sAH" secondAttribute="bottom" id="jOA-xe-iAf"/>
+                <constraint firstItem="Vdq-fT-sAH" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="klF-O4-bfX"/>
+                <constraint firstItem="Vdq-fT-sAH" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="61" id="se1-RZ-BXy"/>
             </constraints>
             <point key="canvasLocation" x="146" y="158"/>
         </view>

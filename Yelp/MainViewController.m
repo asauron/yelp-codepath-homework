@@ -27,6 +27,8 @@ NSString * const kYelpTokenSecret = @"mqtKIxMIR4iBtBPZCmCLEb-Dz3Y";
 @property (nonatomic, strong) YelpClient *client;
 @property (nonatomic, retain) NSArray *businesses;
 
+@property (nonatomic, strong) NSString *searchTerm;
+
 @end
 
 @implementation MainViewController
@@ -39,19 +41,14 @@ NSString * const kYelpTokenSecret = @"mqtKIxMIR4iBtBPZCmCLEb-Dz3Y";
     if (self) {
         // You can register for Yelp API keys here: http://www.yelp.com/developers/manage_api_keys
         self.client = [[YelpClient alloc] initWithConsumerKey:kYelpConsumerKey consumerSecret:kYelpConsumerSecret accessToken:kYelpToken accessSecret:kYelpTokenSecret];
-        
-        [self.client searchWithTerm:@"Thai" success:^(AFHTTPRequestOperation *operation, id response) {
-            NSLog(@"response: %@", response);
-            NSArray *businessDictionaies = response[@"businesses"];
-            self.businesses = [Business businessesWithDictionaries:businessDictionaies];
-            [self.resultsListView reloadData];
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            NSLog(@"error: %@", [error description]);
-        }];
+        self.searchTerm = @"Chinese"; //empty string
+        [self fetchBusinessesWithQuery:self.searchTerm params:nil];
     }
     
     return self;
 }
+
+
 
 - (void)viewDidLoad
 {
@@ -116,6 +113,18 @@ NSString * const kYelpTokenSecret = @"mqtKIxMIR4iBtBPZCmCLEb-Dz3Y";
 
 - (void)filterViewController:(FilterViewController *)filterViewController didChangeFilters:(NSDictionary *)filters {
   ;
+}
+
+- (void)fetchBusinessesWithQuery:(NSString *)query params:(NSDictionary *)params {
+     [self.client searchWithTerm:query success:^(AFHTTPRequestOperation *operation, id response) {
+                            NSLog(@"response: %@", response);
+                            NSArray *businessDictionaies = response[@"businesses"];
+                            self.businesses = [Business businessesWithDictionaries:businessDictionaies];
+                            [self.resultsListView reloadData];
+                        }
+                        failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                            NSLog(@"error: %@", [error description]);
+                        }];
 }
 
 @end
