@@ -1,9 +1,9 @@
 Yelp
 
-Time spent: 7 hours and counting
+Time spent: 14 hours
 
 ### Features
-[so far WIP]
+
 #### Required
 
 - [x] Search results page
