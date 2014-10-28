@@ -11,13 +11,14 @@
 #import "ResultListViewCell.h"
 #import "Business.h"
 #import "BusinessCell.h"
+#import "FilterViewController.h"
 
 NSString * const kYelpConsumerKey = @"vxKwwcR_NMQ7WaEiQBK_CA";
 NSString * const kYelpConsumerSecret = @"33QCvh5bIF5jIHR5klQr7RtBDhQ";
 NSString * const kYelpToken = @"uRcRswHFYa1VkDrGV6LAW2F8clGh5JHV";
 NSString * const kYelpTokenSecret = @"mqtKIxMIR4iBtBPZCmCLEb-Dz3Y";
 
-@interface MainViewController ()
+@interface MainViewController ()<UITableViewDataSource,UITableViewDelegate,FilterViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *resultsListView;
 
 @property (retain, nonatomic) UIBarButtonItem *filterButton;
@@ -100,6 +101,21 @@ NSString * const kYelpTokenSecret = @"mqtKIxMIR4iBtBPZCmCLEb-Dz3Y";
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     [self.searchBar resignFirstResponder];
+}
+
+-(void) onFilterButton{
+    FilterViewController *filter = [[FilterViewController alloc]init];
+    filter.delegate = self;
+    UINavigationController *nvc = [[UINavigationController alloc]
+                                   initWithRootViewController:filter];
+    nvc.navigationBar.barStyle = UIBarStyleBlackTranslucent;
+    [self presentViewController:nvc animated:YES completion:nil];
+}
+
+#pragma mark - Filter delegate methods
+
+- (void)filterViewController:(FilterViewController *)filterViewController didChangeFilters:(NSDictionary *)filters {
+  ;
 }
 
 @end

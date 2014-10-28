@@ -45,7 +45,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="68 whatvere,san francisco" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JfA-pH-fwE">
-                        <rect key="frame" x="110" y="53" width="123" height="12"/>
+                        <rect key="frame" x="110" y="53" width="122.5" height="12"/>
                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
@@ -65,7 +65,7 @@
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="17" id="qiG-dD-Xtk"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.07 miles" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HSl-Px-s7r">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="0.07 miles" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HSl-Px-s7r">
                         <rect key="frame" x="283" y="16" width="48" height="12"/>
                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -163,7 +163,7 @@
                 <outlet property="reviewsLabel" destination="5Y4-Bp-lIE" id="I7a-4p-IDx"/>
                 <outlet property="thumb" destination="Va2-hi-FN7" id="sdE-2D-12t"/>
             </connections>
-            <point key="canvasLocation" x="391.5" y="620"/>
+            <point key="canvasLocation" x="353.5" y="389"/>
         </tableViewCell>
     </objects>
 </document>
