@@ -13,6 +13,9 @@
 @property (nonatomic, strong) NSDictionary *filters;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
+@property (strong, nonatomic) NSArray *categories;
+@property (strong, nonatomic) NSMutableSet *selectedCategories;
+
 @end
 
 @implementation FilterViewController
